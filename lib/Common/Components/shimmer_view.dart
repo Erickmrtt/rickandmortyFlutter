@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-class SimmerView extends StatelessWidget {
-  const SimmerView({super.key});
+class ShimmerView extends StatelessWidget {
+  const ShimmerView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: const Padding(
+    return const Scaffold(
+      body: Padding(
         padding: EdgeInsets.all(10.0),
         child: ShimmerViewSetup(),
       ),

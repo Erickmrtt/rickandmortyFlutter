@@ -9,12 +9,12 @@ class CharacterModule extends Module {
   }
 
   @override
-  void binds(Injector i) {}
-
-  @override
-  void exportedBinds(Injector i) {
+  void binds(Injector i) {
     i.addInstance(CharacterRepository());
   }
+
+  @override
+  void exportedBinds(Injector i) {}
 
   @override
   List<Module> get imports => [];

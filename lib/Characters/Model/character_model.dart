@@ -10,7 +10,7 @@ CharacterModel characterModelFromJson(String str) =>
 String characterModelToJson(CharacterModel data) => json.encode(data.toJson());
 
 class CharacterModel {
-  List<Result>? results;
+  List<CharacterResult>? results;
 
   CharacterModel({
     this.results,
@@ -19,8 +19,8 @@ class CharacterModel {
   factory CharacterModel.fromJson(Map<String, dynamic> json) => CharacterModel(
         results: json["results"] == null
             ? []
-            : List<Result>.from(
-                json["results"]!.map((x) => Result.fromJson(x))),
+            : List<CharacterResult>.from(
+                json["results"]!.map((x) => CharacterResult.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -30,10 +30,10 @@ class CharacterModel {
       };
 }
 
-class Result {
+class CharacterResult {
   int? id;
   String? name;
-  String? status;
+  Status? status;
   String? species;
   String? type;
   String? gender;
@@ -44,7 +44,7 @@ class Result {
   String? url;
   DateTime? created;
 
-  Result({
+  CharacterResult({
     this.id,
     this.name,
     this.status,
@@ -59,10 +59,11 @@ class Result {
     this.created,
   });
 
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
+  factory CharacterResult.fromJson(Map<String, dynamic> json) =>
+      CharacterResult(
         id: json["id"],
         name: json["name"],
-        status: json["status"],
+        status: parseStatus(json['status'] as String),
         species: json["species"],
         type: json["type"],
         gender: json["gender"],
@@ -95,6 +96,19 @@ class Result {
         "url": url,
         "created": created?.toIso8601String(),
       };
+  static Status parseStatus(String status) {
+    switch (status.toLowerCase()) {
+      case 'alive':
+        return Status.alive;
+      case 'dead':
+        return Status.dead;
+      case 'unknown':
+        return Status.unknown;
+      default:
+        return Status
+            .unknown;
+    }
+  }
 }
 
 class Location {
@@ -116,3 +130,7 @@ class Location {
         "url": url,
       };
 }
+
+enum Status { alive, dead, unknown }
+
+
