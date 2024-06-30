@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:rick_and_morty/Characters/Model/character_model.dart';
 import 'package:rick_and_morty/Characters/Repository/character_repository.dart';
-import 'package:rick_and_morty/Characters/Screens/Details/character_status_view.dart';
+import 'package:rick_and_morty/Characters/Screens/character_widget.dart';
 import 'package:rick_and_morty/Common/Components/shimmer_view.dart';
-import 'package:rick_and_morty/Episodes/Screens/episode_view.dart';
+import 'package:rick_and_morty/Common/Utils/app_colors.dart';
+import 'package:rick_and_morty/Common/Utils/strings.dart';
 
 class CharacterView extends StatefulWidget {
   const CharacterView({super.key});
@@ -27,9 +29,12 @@ class _CharacterViewState extends State<CharacterView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: AppColors.grey850,
         appBar: AppBar(
-          title: const Text('Rick and Morty'),
+          title: Text('Rick and Morty',
+              style: GoogleFonts.roboto(color: Colors.white)),
           centerTitle: true,
+          backgroundColor: AppColors.grey850,
         ),
         body: FutureBuilder<List<CharacterResult>>(
           future: characters,
@@ -64,28 +69,10 @@ class _CharacterViewState extends State<CharacterView> {
                   final character = snapshot.data![index];
                   return InkWell(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              EpisodeView(episodes: character.episode!),
-                        ),
-                      );
+                      Modular.to.pushNamed(Strings.characterDetailsScreen,
+                          arguments: character);
                     },
-                    child: ListTile(
-                      leading: CircleAvatar(
-                        backgroundImage: NetworkImage(character.image!),
-                      ),
-                      title: Text(character.name!),
-                      subtitle: Text(character.species!),
-                      trailing:  Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            CharacterStatus(character: character,),
-                            const Icon(Icons.arrow_forward_ios),
-                          ]),
-                    ),
+                    child: CharacterWidget(character: character),
                   );
                 },
               );
@@ -94,5 +81,3 @@ class _CharacterViewState extends State<CharacterView> {
         ));
   }
 }
-
-

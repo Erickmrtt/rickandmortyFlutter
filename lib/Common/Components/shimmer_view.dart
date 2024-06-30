@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rick_and_morty/Common/Utils/app_colors.dart';
 
 class ShimmerView extends StatelessWidget {
   const ShimmerView({super.key});
@@ -6,6 +7,7 @@ class ShimmerView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
+      backgroundColor: AppColors.grey850,
       body: Padding(
         padding: EdgeInsets.all(10.0),
         child: ShimmerViewSetup(),
@@ -61,7 +63,7 @@ class ShimmerBox extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.05),
+            color: const Color.fromARGB(255, 255, 239, 239).withOpacity(0.05),
             borderRadius: BorderRadius.circular(15.0),
           ),
         ),

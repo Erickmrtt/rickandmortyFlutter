@@ -105,8 +105,7 @@ class CharacterResult {
       case 'unknown':
         return Status.unknown;
       default:
-        return Status
-            .unknown;
+        return Status.unknown;
     }
   }
 }
@@ -132,5 +131,3 @@ class Location {
 }
 
 enum Status { alive, dead, unknown }
-
-
