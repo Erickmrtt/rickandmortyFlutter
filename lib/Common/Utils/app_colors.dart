@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class AppColors {
   static const Color blueColor = Color(0xFF2F39C5);
@@ -8,4 +7,8 @@ class AppColors {
   static const Color grey = Color(0xFF9E9E9E);
   static const Color white = Color(0xFFFFFFFF);
   static const Color grey850 = Color.fromRGBO(48, 48, 48, 1);
+  static const Color green = Colors.green;
+  static const Color red = Colors.red;
+  static const Color yellow = Colors.yellow;
+
 }

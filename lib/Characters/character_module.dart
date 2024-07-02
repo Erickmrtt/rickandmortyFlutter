@@ -3,6 +3,7 @@ import 'package:rick_and_morty/Characters/Model/character_model.dart';
 import 'package:rick_and_morty/Characters/Repository/character_repository.dart';
 import 'package:rick_and_morty/Characters/Screens/Details/character_detail_view.dart';
 import 'package:rick_and_morty/Characters/Screens/character_view.dart';
+import 'package:rick_and_morty/Characters/Stores/character_detail_store.dart';
 import 'package:rick_and_morty/Common/Utils/strings.dart';
 
 class CharacterModule extends Module {
@@ -17,6 +18,7 @@ class CharacterModule extends Module {
 
   @override
   void binds(Injector i) {
+    i.addInstance(CharacterDetailStore());
     i.addInstance(CharacterRepository());
   }
 

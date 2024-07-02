@@ -68,10 +68,7 @@ class _CharacterViewState extends State<CharacterView> {
                 itemBuilder: (context, index) {
                   final character = snapshot.data![index];
                   return InkWell(
-                    onTap: () {
-                      Modular.to.pushNamed(Strings.characterDetailsScreen,
-                          arguments: character);
-                    },
+                    onTap: () =>  Modular.to.pushNamed(Strings.characterDetailsScreen, arguments: character),
                     child: CharacterWidget(character: character),
                   );
                 },
