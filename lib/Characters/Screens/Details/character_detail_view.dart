@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:rick_and_morty/Characters/Model/character_model.dart';
 import 'package:rick_and_morty/Characters/Stores/character_detail_store.dart';
 import 'package:rick_and_morty/Common/Utils/app_colors.dart';
-import 'package:rick_and_morty/Episodes/Screens/episode_view.dart';
+import 'package:rick_and_morty/Episodes/Screens/Details/episode_details_view.dart';
 
 class CharacterDetailsScreen extends StatefulWidget {
   final CharacterResult character;
@@ -36,10 +36,7 @@ class _CharacterDetailsScreenState extends State<CharacterDetailsScreen> {
         ),
         centerTitle: true,
         backgroundColor: AppColors.grey850,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Modular.to.pop(context)
-        ),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -103,7 +100,7 @@ class _CharacterDetailsScreenState extends State<CharacterDetailsScreen> {
                   fontWeight: FontWeight.bold, color: Colors.white),
             ),
           ),
-          Expanded(flex: 5, child: EpisodeViews(episodes: widget.character.episode!)),
+          Expanded(flex: 5, child: EpisodeDetailsView(episodes: widget.character.episode!)),
         ],
       ),
     );

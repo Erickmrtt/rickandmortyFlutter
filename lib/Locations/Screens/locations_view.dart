@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class EpisodeView extends StatelessWidget {
-  const EpisodeView({super.key});
+class LocationsView extends StatelessWidget {
+  const LocationsView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        title: const Text('Episodes'),
+        title: const Text('Locations'),
       ),
       body: const Center(
-        child: Text('Episodes'),
+        child: Text('Locations'),
       ),
     );
   }

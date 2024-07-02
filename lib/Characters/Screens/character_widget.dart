@@ -13,35 +13,33 @@ class CharacterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        margin: const EdgeInsets.all(1),
-        padding: const EdgeInsets.all(20),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              backgroundImage: NetworkImage(character.image!),
+    return Container(
+      margin: const EdgeInsets.all(1),
+      padding: const EdgeInsets.all(20),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          CircleAvatar(
+            backgroundImage: NetworkImage(character.image!),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(character.name!,
+                    style: GoogleFonts.roboto(color: Colors.white)),
+                Text(character.species!,
+                    style: GoogleFonts.roboto(color: Colors.white)),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(character.name!,
-                      style: GoogleFonts.roboto(color: Colors.white)),
-                  Text(character.species!,
-                      style: GoogleFonts.roboto(color: Colors.white)),
-                ],
-              ),
-            ),
-            const Spacer(),
-            CharacterStatus(
-              character: character,
-            ),
-            const Icon(Icons.arrow_forward_ios, color: Colors.white),
-          ],
-        ),
+          ),
+          const Spacer(),
+          CharacterStatus(
+            character: character,
+          ),
+          const Icon(Icons.arrow_forward_ios, color: Colors.white),
+        ],
       ),
     );
   }

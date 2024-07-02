@@ -7,6 +7,7 @@ import 'package:rick_and_morty/Characters/Screens/character_widget.dart';
 import 'package:rick_and_morty/Common/Components/shimmer_view.dart';
 import 'package:rick_and_morty/Common/Utils/app_colors.dart';
 import 'package:rick_and_morty/Common/Utils/strings.dart';
+import 'package:rick_and_morty/Core/side_menu_view.dart';
 
 class CharacterView extends StatefulWidget {
   const CharacterView({super.key});
@@ -34,8 +35,10 @@ class _CharacterViewState extends State<CharacterView> {
           title: Text('Rick and Morty',
               style: GoogleFonts.roboto(color: Colors.white)),
           centerTitle: true,
+          iconTheme: const IconThemeData(color: Colors.white),
           backgroundColor: AppColors.grey850,
         ),
+        drawer: const SideMenuView(),
         body: FutureBuilder<List<CharacterResult>>(
           future: characters,
           builder: (context, snapshot) {
@@ -68,7 +71,9 @@ class _CharacterViewState extends State<CharacterView> {
                 itemBuilder: (context, index) {
                   final character = snapshot.data![index];
                   return InkWell(
-                    onTap: () =>  Modular.to.pushNamed(Strings.characterDetailsScreen, arguments: character),
+                    onTap: () => Modular.to.pushNamed(
+                        Strings.characterDetailsScreen,
+                        arguments: character),
                     child: CharacterWidget(character: character),
                   );
                 },
