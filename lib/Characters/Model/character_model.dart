@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final characterModel = characterModelFromJson(jsonString);
-
 import 'dart:convert';
 
 CharacterModel characterModelFromJson(String str) =>

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rick_and_morty/Common/Components/shimmer_view.dart';
 import 'package:rick_and_morty/Common/Utils/app_colors.dart';
+import 'package:rick_and_morty/Episodes/Model/episode_character_model.dart';
 import 'package:rick_and_morty/Episodes/Model/episode_model.dart';
 import 'package:rick_and_morty/Episodes/Repository/episode_repository.dart';
 class EpisodeDetailsView extends StatefulWidget {
@@ -15,19 +16,19 @@ class EpisodeDetailsView extends StatefulWidget {
 
 class _EpisodeDetailsViewState extends State<EpisodeDetailsView> {
   final EpisodeRepository episodeRepository = EpisodeRepository();
-  late Future<List<EpisodeResult>> episodesFuture;
+  late Future<List<EpisodeCharacterResult>> episodesFuture;
 
   @override
   void initState() {
     super.initState();
-    episodesFuture = episodeRepository.fetchEpisode(widget.episodes);
+    episodesFuture = episodeRepository.fetchCharacterEpisode(widget.episodes);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.grey850,
-      body: FutureBuilder<List<EpisodeResult>>(
+      body: FutureBuilder<List<EpisodeCharacterResult>>(
         future: episodesFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {

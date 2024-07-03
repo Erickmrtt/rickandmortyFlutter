@@ -5,14 +5,14 @@ EpisodeModel episodeModelFromJson(String str) => EpisodeModel.fromJson(json.deco
 String episodeModelToJson(EpisodeModel data) => json.encode(data.toJson());
 
 class EpisodeModel {
-    List<EpisodeResult>? results;
+    List<EpisodeCharacterResult>? results;
 
     EpisodeModel({
         this.results,
     });
 
     factory EpisodeModel.fromJson(Map<String, dynamic> json) => EpisodeModel(
-        results: json["results"] == null ? [] : List<EpisodeResult>.from(json["results"]!.map((x) => EpisodeResult.fromJson(x))),
+        results: json["results"] == null ? [] : List<EpisodeCharacterResult>.from(json["results"]!.map((x) => EpisodeCharacterResult.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
@@ -20,31 +20,31 @@ class EpisodeModel {
     };
 }
 
-class EpisodeResult {
+class EpisodeCharacterResult {
     int? id;
     String? name;
-    String? airDate;
-    String? episode;
-    List<String>? characters;
+    String? type;
+    String? dimension;
+    List<String>? residents;
     String? url;
     DateTime? created;
 
-    EpisodeResult({
+    EpisodeCharacterResult({
         this.id,
         this.name,
-        this.airDate,
-        this.episode,
-        this.characters,
+        this.type,
+        this.dimension,
+        this.residents,
         this.url,
         this.created,
     });
 
-    factory EpisodeResult.fromJson(Map<String, dynamic> json) => EpisodeResult(
+    factory EpisodeCharacterResult.fromJson(Map<String, dynamic> json) => EpisodeCharacterResult(
         id: json["id"],
         name: json["name"],
-        airDate: json["air_date"],
-        episode: json["episode"],
-        characters: json["characters"] == null ? [] : List<String>.from(json["characters"]!.map((x) => x)),
+        type: json["type"],
+        dimension: json["dimension"],
+        residents: json["residents"] == null ? [] : List<String>.from(json["residents"]!.map((x) => x)),
         url: json["url"],
         created: json["created"] == null ? null : DateTime.parse(json["created"]),
     );
@@ -52,9 +52,9 @@ class EpisodeResult {
     Map<String, dynamic> toJson() => {
         "id": id,
         "name": name,
-        "air_date": airDate,
-        "episode": episode,
-        "characters": characters == null ? [] : List<dynamic>.from(characters!.map((x) => x)),
+        "type": type,
+        "dimension": dimension,
+        "residents": residents == null ? [] : List<dynamic>.from(residents!.map((x) => x)),
         "url": url,
         "created": created?.toIso8601String(),
     };
