@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:rick_and_morty/Common/Components/shimmer_view.dart';
 import 'package:rick_and_morty/Common/Utils/app_colors.dart';
 import 'package:rick_and_morty/Episodes/Model/episode_character_model.dart';
-import 'package:rick_and_morty/Episodes/Model/episode_model.dart';
 import 'package:rick_and_morty/Episodes/Repository/episode_repository.dart';
 class EpisodeDetailsView extends StatefulWidget {
   final List<String> episodes;

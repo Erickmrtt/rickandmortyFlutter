@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:mobx/mobx.dart';
 import 'package:rick_and_morty/Characters/Model/character_model.dart';
-import 'package:rick_and_morty/Characters/Repository/character_repository.dart';
 import 'package:rick_and_morty/Common/Utils/app_colors.dart';
 
 part 'character_detail_store.g.dart';
@@ -11,8 +10,6 @@ part 'character_detail_store.g.dart';
 class CharacterDetailStore = _CharacterDetailStore with _$CharacterDetailStore;
 
 abstract class _CharacterDetailStore with Store {
-  final CharacterRepository _characterRepository = CharacterRepository();
-
   @observable
   List<CharacterResult> character = <CharacterResult>[];
 
@@ -61,7 +58,6 @@ abstract class _CharacterDetailStore with Store {
   @action
   Future<void> getCharacterDetail() async {
     loading = true;
-    //character = await _characterRepository.fetchCharacters();
     await _checkLiveText();
     await _checkLiveCharacter();
     loading = false;
