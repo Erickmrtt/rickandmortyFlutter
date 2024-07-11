@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:rick_and_morty/Characters/Model/character_model.dart';
 import 'package:rick_and_morty/Characters/Stores/character_detail_store.dart';
 import 'package:rick_and_morty/Common/Utils/app_colors.dart';
+import 'package:rick_and_morty/Common/language/lang_extension.dart';
 import 'package:rick_and_morty/Episodes/Screens/Details/episode_details_view.dart';
 
 class CharacterDetailsScreen extends StatefulWidget {
@@ -16,13 +17,14 @@ class CharacterDetailsScreen extends StatefulWidget {
 }
 
 class _CharacterDetailsScreenState extends State<CharacterDetailsScreen> {
-  final CharacterDetailStore characterDetailStore = Modular.get<CharacterDetailStore>();
+  final CharacterDetailStore characterDetailStore =
+      Modular.get<CharacterDetailStore>();
 
   @override
-  void initState () {
+  void initState() {
     super.initState();
     characterDetailStore.characterResult = widget.character;
-     characterDetailStore.getCharacterDetail();
+    characterDetailStore.getCharacterDetail();
   }
 
   @override
@@ -54,7 +56,8 @@ class _CharacterDetailsScreenState extends State<CharacterDetailsScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CircleAvatar(
-                          backgroundImage: NetworkImage(widget.character.image ?? ''),
+                          backgroundImage:
+                              NetworkImage(widget.character.image ?? ''),
                           radius: 50,
                         ),
                         Text(
@@ -78,13 +81,12 @@ class _CharacterDetailsScreenState extends State<CharacterDetailsScreen> {
                       ),
                       Text(widget.character.gender ?? '',
                           style: GoogleFonts.openSans(color: Colors.white)),
-                      Observer(
-                        builder: (context) {
-                          return Text(characterDetailStore.characterStatus,
-                              style:
-                                  GoogleFonts.openSans(color: characterDetailStore.characterColorStatus));
-                        }
-                      )
+                      Observer(builder: (context) {
+                        return Text(characterDetailStore.characterStatus,
+                            style: GoogleFonts.openSans(
+                                color:
+                                    characterDetailStore.characterColorStatus));
+                      })
                     ],
                   ),
                 ),
@@ -94,13 +96,15 @@ class _CharacterDetailsScreenState extends State<CharacterDetailsScreen> {
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Text(
-              "EPISODES:",
+              context.lang.episodesDetailsTitle,
               textAlign: TextAlign.left,
               style: GoogleFonts.openSans(
                   fontWeight: FontWeight.bold, color: Colors.white),
             ),
           ),
-          Expanded(flex: 5, child: EpisodeDetailsView(episodes: widget.character.episode!)),
+          Expanded(
+              flex: 5,
+              child: EpisodeDetailsView(episodes: widget.character.episode!)),
         ],
       ),
     );

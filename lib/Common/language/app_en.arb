@@ -1,5 +1,8 @@
 {
     "@@locale": "en",
-    "helloWorld": "Hello World!",
-    "morningGreeting": "good morning"
+    "episodesDetailsTitle": "EPISODES:",
+    "tryAgain": "Try Again",
+    "unexpectedError": "Ops! An unexpected error occurred:",
+    "rickAndMorty": "Rick and Morty"
+    
 }

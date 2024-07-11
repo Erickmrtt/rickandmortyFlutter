@@ -7,6 +7,7 @@ import 'package:rick_and_morty/Characters/Screens/character_widget.dart';
 import 'package:rick_and_morty/Common/Components/shimmer_view.dart';
 import 'package:rick_and_morty/Common/Utils/app_colors.dart';
 import 'package:rick_and_morty/Common/Utils/strings.dart';
+import 'package:rick_and_morty/Common/language/lang_extension.dart';
 import 'package:rick_and_morty/Core/side_menu_view.dart';
 
 class CharacterView extends StatefulWidget {
@@ -32,7 +33,7 @@ class _CharacterViewState extends State<CharacterView> {
     return Scaffold(
         backgroundColor: AppColors.grey850,
         appBar: AppBar(
-          title: Text('Rick and Morty',
+          title: Text(context.lang.rickAndMorty,
               style: GoogleFonts.roboto(color: Colors.white)),
           centerTitle: true,
           iconTheme: const IconThemeData(color: Colors.white),
@@ -51,8 +52,7 @@ class _CharacterViewState extends State<CharacterView> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                        'Ops! An unexpected error occurred: ${snapshot.error}'),
+                    Text('${context.lang.unexpectedError} ${snapshot.error}'),
                     const SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () {
